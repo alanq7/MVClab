@@ -63,53 +63,73 @@ git clone ADRES_REPOZYTORIUM
 
 Po sklonowaniu przejdź do folderu projektu:
 
-bash cd katalog_filmow 
+```bash
+cd katalog_filmow 
+```
 
 ### 2. Utwórz środowisko wirtualne
 
-bash python3 -m venv venv 
+```bash
+python3 -m venv venv 
+```
 
 ### 3. Aktywuj środowisko wirtualne
 
 Na systemie macOS/Linux:
 
-bash source venv/bin/activate 
+```bash
+source venv/bin/activate 
+```
 
 Na systemie Windows:
 
-bash venv\Scripts\activate 
+```bash
+venv\Scripts\activate 
+```
 
 Po aktywacji środowiska wirtualnego w terminalu powinna pojawić się nazwa środowiska, np. (venv).
 
 ### 4. Zainstaluj wymagane paczki
 
-bash pip install -r requirements.txt 
+```bash
+pip install -r requirements.txt 
+```
 
 Plik requirements.txt zawiera biblioteki potrzebne do działania projektu, między innymi Django oraz Pillow.
 
 ### 5. Wykonaj migracje bazy danych
 
-bash python manage.py migrate 
+```bash
+python manage.py migrate 
+```
 
 Ta komenda utworzy potrzebne tabele w lokalnej bazie danych SQLite.
 
 ### 6. Utwórz konto administratora
 
-bash python manage.py createsuperuser 
+```bash
+python manage.py createsuperuser 
+```
 
 Po wykonaniu komendy należy podać nazwę użytkownika, adres e-mail oraz hasło. Konto administratora pozwala zalogować się do panelu Django pod adresem /admin/.
 
 ### 7. Uruchom serwer developerski
 
-bash python manage.py runserver 
+```bash
+python manage.py runserver 
+```
 
 Po uruchomieniu serwera aplikacja będzie dostępna pod adresem:
 
-text http://127.0.0.1:8000/ 
+```text
+http://127.0.0.1:8000/ 
+```
 
 Panel administratora Django będzie dostępny pod adresem:
 
-text http://127.0.0.1:8000/admin/ 
+```text
+http://127.0.0.1:8000/admin/ 
+```
 
 ### 8. Dodawanie danych
 
@@ -195,11 +215,15 @@ Każdy film posiada następujące dane:
 
 Plakaty filmów są obsługiwane przez pole ImageField w modelu Movie. Plik plakatu nie jest zapisywany bezpośrednio w bazie danych. W bazie przechowywana jest jedynie ścieżka do pliku, natomiast sam obraz znajduje się w folderze:
 
-text media/posters/ 
+```text
+media/posters/ 
+```
 
 Przykładowo, jeżeli film posiada plakat whiplash.webp, może on zostać zapisany jako:
 
-text media/posters/whiplash.webp 
+```text
+media/posters/whiplash.webp 
+```
 
 Aplikacja obsługuje dodawanie plakatów dzięki konfiguracji:
 
