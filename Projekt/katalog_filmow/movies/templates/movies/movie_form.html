@@ -1,0 +1,58 @@
+{% extends 'movies/base.html' %}
+
+{% block title %}{% if movie %}Edytuj film{% else %}Dodaj film{% endif %}{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <h2>{% if movie %}Edytuj film{% else %}Dodaj film{% endif %}</h2>
+
+        <form method="post" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="error">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <div class="form-field">
+                {{ form.title.label_tag }}
+                {{ form.title }}
+                {% if form.title.errors %}
+                    <div class="error">{{ form.title.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-field">
+                {{ form.director.label_tag }}
+                {{ form.director }}
+                {% if form.director.errors %}
+                    <div class="error">{{ form.director.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-field">
+                {{ form.rating.label_tag }}
+                {{ form.rating }}
+                {% if form.rating.errors %}
+                    <div class="error">{{ form.rating.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-field">
+                {{ form.poster.label_tag }}
+                {{ form.poster }}
+                {% if movie and movie.poster %}
+                    <p>Aktualny plakat:</p>
+                    <img class="poster-preview" src="{{ movie.poster.url }}" alt="{{ movie.title }}">
+                {% endif %}
+                {% if form.poster.errors %}
+                    <div class="error">{{ form.poster.errors }}</div>
+                {% endif %}
+            </div>
+
+            <button class="btn btn-primary" type="submit">Zapisz film</button>
+            <a class="btn btn-secondary" href="{% url 'movie_list' %}">Powrót do listy</a>
+        </form>
+    </div>
+{% endblock %}

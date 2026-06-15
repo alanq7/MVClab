@@ -1,0 +1,33 @@
+{% extends 'movies/base.html' %}
+
+{% block title %}{{ movie.title }}{% endblock %}
+
+{% block content %}
+    <div class="card movie-detail-card">
+        <div class="detail-poster-box">
+            {% if movie.poster %}
+                <img class="detail-poster" src="{{ movie.poster.url }}" alt="{{ movie.title }}">
+            {% else %}
+                <div class="detail-poster-placeholder">Brak plakatu</div>
+            {% endif %}
+        </div>
+
+        <div class="detail-content">
+            <h2 class="detail-title">{{ movie.title }}</h2>
+
+            <p class="detail-row">
+                <strong>Reżyser:</strong> {{ movie.director }}
+            </p>
+
+            <p class="detail-row movie-rating">
+                ★ {{ movie.rating }}/10
+            </p>
+
+            <div class="footer-links">
+                <a class="btn btn-primary" href="{% url 'movie_update' movie.slug %}">Edytuj film</a>
+                <a class="btn btn-danger" href="{% url 'movie_delete' movie.slug %}">Usuń film</a>
+                <a class="btn btn-secondary" href="{% url 'movie_list' %}">Powrót do listy</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
