@@ -121,7 +121,7 @@ Filmy można dodawać na dwa sposoby:
 Każdy film posiada tytuł, reżysera, ocenę oraz opcjonalny plakat. Plakaty dodane przez formularz są zapisywane w folderze media/posters/.
 
 ## Struktura projektu
-
+```text
 katalog_filmow/
 ├── config/
 │   ├── __init__.py
@@ -164,7 +164,7 @@ katalog_filmow/
 ├── manage.py
 ├── README.md
 └── requirements.txt
-
+```
 Najważniejsze elementy projektu:
 
 - config/ — główna konfiguracja projektu Django.
