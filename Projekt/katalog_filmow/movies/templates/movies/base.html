@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Katalog filmów{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'movies/style.css' %}">
+</head>
+<body>
+    <header class="page-header">
+        <div class="container header-content">
+            <div>
+                <h1>🎬 Katalog kolekcji filmów</h1>
+            </div>
+
+            <nav class="top-nav">
+                <a href="{% url 'movie_list' %}">Lista filmów</a>
+                <a href="{% url 'movie_create' %}">Dodaj film</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
